@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Reward from "rewards-lite";
+import Reward from "./Reward";
 import {faSortDown, faSortUp} from "@fortawesome/free-solid-svg-icons";
 import YouTube from "react-youtube";
 

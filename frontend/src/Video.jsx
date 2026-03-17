@@ -2,7 +2,6 @@ import './App.scss';
 import YouTube from "react-youtube";
 import React from "react";
 import axios from "axios";
-import uuid from "react-uuid";
 import store from "store";
 import qs from 'qs';
 import Blockies from '@pacta-app/react-blockies';
@@ -20,7 +19,7 @@ import {
 } from "@fortawesome/pro-regular-svg-icons";
 import FancyButton from "./FancyButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Reward from "rewards-lite";
+import Reward from "./components/Reward";
 import {getConfigValue} from "./utils";
 
 const endpoint = getConfigValue("endpoint");
@@ -41,7 +40,7 @@ class Video extends React.Component {
         } else if (store.get("uuid")) {
             this.state.uuid = store.get("uuid");
         } else {
-            let my_uuid = uuid();
+            let my_uuid = crypto.randomUUID();
             this.state.uuid = my_uuid;
             store.set("uuid", my_uuid);
         }
@@ -343,7 +342,7 @@ class Video extends React.Component {
                         <input value={window.location.origin + "?uuid=" + this.state.uuid} type={this.state.showPassword ? "text" : "password"} id="password_ll" readOnly={true} onChange={this.handleInput} />
                         <button onClick={this.onTogglePassword}><FontAwesomeIcon icon={faEye} /></button>
                     </div>
-                    <label>or </label>{this.state.showPassword ? <span>Drag this link into your bookmarks -> <a href={"?uuid=" + this.state.uuid}>Shitpost Status</a></span> : "****"}
+                    <label>or </label>{this.state.showPassword ? <span>Drag this link into your bookmarks {'->'} <a href={"?uuid=" + this.state.uuid}>Shitpost Status</a></span> : "****"}
                 </form>
             </div>
         </div>);

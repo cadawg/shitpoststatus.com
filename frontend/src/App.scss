@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 #root, .App {
     height: 100%;
     width: 100%;
@@ -126,21 +128,21 @@ button.fancy-button {
         background-color: darkgreen;
 
         &:disabled {
-            border-color: mix(darkgreen, grey, 50);
-            background-color: mix(darkgreen, grey, 50);
+            border-color: color.mix(darkgreen, grey, 50%);
+            background-color: color.mix(darkgreen, grey, 50%);
         }
 
         &:hover {
-            background-color: lighten(darkgreen, 10);
-            border-color: lighten(darkgreen, 10);
+            background-color: color.adjust(darkgreen, $lightness: 10%);
+            border-color: color.adjust(darkgreen, $lightness: 10%);
         }
     }
 
     &:disabled {
         user-select: none;
         pointer-events: none;
-        border-color: mix($yt-dark-red, grey, 70);
-        background-color: mix($yt-dark-red, grey, 70);
+        border-color: color.mix($yt-dark-red, grey, 70%);
+        background-color: color.mix($yt-dark-red, grey, 70%);
     }
 
     a {
@@ -179,7 +181,7 @@ button.fancy-button {
     justify-content: center;
 
     .dialog {
-        background-color: mix($yt-white, $yt-black, 20);
+        background-color: color.mix($yt-white, $yt-black, 20%);
         color: $yt-white;
         border-radius: 5px;
         padding: 10px 15px;

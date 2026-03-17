@@ -1,7 +1,6 @@
 import './Listings.scss';
 import React from "react";
 import axios from "axios";
-import uuid from "react-uuid";
 import store from "store";
 import qs from 'qs';
 import sha256 from 'crypto-js/sha256';
@@ -26,7 +25,7 @@ class Video extends React.Component {
         } else if (store.get("uuid")) {
             this.state.uuid = store.get("uuid");
         } else {
-            let my_uuid = uuid();
+            let my_uuid = crypto.randomUUID();
             this.state.uuid = my_uuid;
             store.set("uuid", my_uuid);
         }
